@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* thẻ nav */
+#container-nav {
+  background-color: #f3f4f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+/* nút đăng nhập ở nav */
+#btn-login-nav {
+  background-color: #3b82f6;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-right: 5px;
+  cursor: pointer;
+}
+/* khi di chuột vào nút đăng nhập */
+#btn-login-nav:hover {
+  background-color: #2666cd;
+}
+/* nút đăng ký  ở nav */
+#btn-register-nav {
+  background-color: #22c55e;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+/* khi di chuột vào nút đăng ký */
+#btn-register-nav:hover {
+  background-color: #16a34a;
+}
+/* căn giữa form đăng ký */
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+/* Hộp chứa form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+/* Tiêu đề form */
+h1 {
+  margin-bottom: 20px;
+}
+/* Nhãn của input */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #384252;
+  opacity: 0.9;
+  align-self: flex-start; /* Đẩy label về bên trái */
+  font-weight: 300;
+}
+/* Ô nhập liệu */
+input {
+  width: 100%;
+  padding: 10px;
+  /* margin-bottom: 15px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+/* Nút đăng nhập ở form*/
+#btn-login {
+  background-color: #3b82f6;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+/* khi di chuột vào nút đăng nhập */
+#btn-login:hover {
+  background-color: #2666cd;
+}
+/* Hiệu ứng khi focus vào input */
+input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+/* thẻ footer */
+.container-footer {
+  text-align: center;
+  background-color: #f3f4f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 20px 0px;
+  margin-top: 220px;
+}

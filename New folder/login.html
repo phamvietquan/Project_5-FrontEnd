@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- thẻ nav -->
+      <div id="container-nav">
+        <h3 style="margin-left: 50px">VocabApp</h3>
+        <span style="margin-right: 50px"
+          ><button id="btn-login-nav">LogIn</button><button id="btn-register-nav">register</button></span
+        >
+      </div>
+      <!-- form đăng nhập -->
+      <div class="container-login">
+        <form action="" id="registerForm">
+          <h1>Login</h1>
+          <label for="email">Email</label>
+          <input type="email" name="Email" id="email" />
+          <label for="password">Password</label>
+          <input type="password" name="Password" id="password" />
+          <button id="btn-login" onclick="register(event)">Login</button>
+        </form>
+      </div>
+      <!-- thẻ footer -->
+      <div class="container-footer">
+        <p>&copy; 2024 VocabApp. All rights reserved.</p>
+      </div>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>
