@@ -9,12 +9,12 @@
   <body>
     <div class="container">
       <!-- thẻ nav -->
-      <div id="container-nav">
+      <nav>
         <h3 style="margin-left: 50px">VocabApp</h3>
         <span style="margin-right: 50px"
           ><button id="btn-login-nav">LogIn</button><button id="btn-register-nav">register</button></span
         >
-      </div>
+      </nav>
       <!-- form đăng ký -->
       <div class="container-register">
         <form action="" id="registerForm">
@@ -29,13 +29,13 @@
           <input type="password" name="Password" id="password" />
           <label for="confirm">Confirm Password</label>
           <input type="password" name="Confirm Password" id="confirm" />
-          <button id="btn-register" onclick="register(event)">Register</button>
+          <button type="submit" id="btn-register" onclick="register(event)">Register</button>
         </form>
       </div>
       <!-- thẻ footer -->
-      <div class="container-footer">
+      <footer>
         <p>&copy; 2024 VocabApp. All rights reserved.</p>
-      </div>
+      </footer>
     </div>
     <script src="register.js"></script>
   </body>

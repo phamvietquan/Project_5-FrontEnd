@@ -5,7 +5,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 /* thẻ nav */
-#container-nav {
+nav {
   background-color: #f3f4f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -103,7 +103,7 @@ input:focus {
   box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
 /* thẻ footer */
-.container-footer {
+footer {
   text-align: center;
   background-color: #f3f4f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
