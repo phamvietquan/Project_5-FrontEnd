@@ -13,11 +13,9 @@ nav {
   padding: 15px;
 }
 /* chữ vocabApp */
-a {
-  font-weight: bold;
+h4 {
   padding-top: 5px;
   margin-left: 50px;
-  text-decoration: none;
   color: #1f2937;
   font-size: 18.9px;
 }

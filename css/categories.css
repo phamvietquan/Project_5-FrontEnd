@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+nav {
+  background-color: #f3f4f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  gap: 20px;
+  padding-left: 100px;
+}
+/* các thẻ ở nav */
+nav a {
+  text-decoration: none;
+}
+/* thẻ p ở thẻ footer */
+p {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+#btn-add-cate {
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 0px 15px;
+  background-color: #22c55e;
+  color: white;
+  margin-left: 600px;
+}
+#search {
+  width: 100%;
+  /* margin-left: 50px;
+  margin-right: 50px; */
+}
