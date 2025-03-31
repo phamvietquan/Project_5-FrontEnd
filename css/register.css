@@ -12,6 +12,15 @@ nav {
   justify-content: space-between;
   padding: 15px;
 }
+/* chữ vocabApp */
+a {
+  font-weight: bold;
+  padding-top: 5px;
+  margin-left: 50px;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 18.9px;
+}
 /* nút đăng nhập ở nav */
 #btn-login-nav {
   background-color: #3b82f6;
@@ -44,7 +53,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 /* hộp chứa form */
 form {
@@ -82,7 +91,7 @@ input {
 }
 /* Nút đăng ký ở form*/
 #btn-register {
-  background-color: #3b82f6;
+  background-color: #22c55e;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -94,7 +103,7 @@ input {
 }
 /* khi di chuột vào nút đăng ký */
 #btn-register:hover {
-  background-color: #2666cd;
+  background-color: #16a34a;
 }
 /* Hiệu ứng khi focus vào input */
 input:focus {
@@ -108,5 +117,5 @@ footer {
   background-color: #f3f4f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   padding: 15px 0px;
-  margin-top: 20px;
+  margin-top: 15px;
 }

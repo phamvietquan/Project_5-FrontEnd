@@ -10,9 +10,10 @@
     <div class="container">
       <!-- thẻ nav -->
       <nav>
-        <h3 style="margin-left: 50px">VocabApp</h3>
+        <a href="http://127.0.0.1:5500/pages/homePage.html">VocabApp</a>
         <span style="margin-right: 50px"
-          ><button id="btn-login-nav">LogIn</button><button id="btn-register-nav">register</button></span
+          ><button id="btn-login-nav">LogIn</button
+          ><button id="btn-register-nav" onclick="registerNav(event)">register</button></span
         >
       </nav>
       <!-- form đăng nhập -->
@@ -23,6 +24,7 @@
           <input type="email" name="Email" id="email" />
           <label for="password">Password</label>
           <input type="password" name="Password" id="password" />
+          <p style="color: red; font-size: 13px; width: 100%" id="error"></p>
           <button type="submit" id="btn-login" onclick="login(event)">Login</button>
         </form>
       </div>

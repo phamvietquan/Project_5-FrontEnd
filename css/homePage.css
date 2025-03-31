@@ -9,7 +9,6 @@ nav {
   background-color: #f3f4f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
-  /* justify-content: space-between; */
   padding: 15px;
   gap: 20px;
   padding-left: 100px;
@@ -53,5 +52,14 @@ footer {
   background-color: #f3f4f6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   padding: 20px 0px;
-  margin-top: 200px;
+  margin-top: 400px;
+}
+@media screen and (max-width: 834px) {
+  nav {
+    background-color: #f3f4f6;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    padding: 15px;
+    gap: 20px;
+  }
 }

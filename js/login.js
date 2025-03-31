@@ -5,13 +5,19 @@ function login(e) {
   let password = document.getElementById("password").value.trim();
   let checkUsere = usersList.find((item) => item.email === emailLogin && item.pass === password);
   if (!emailLogin || !password) {
-    alert("Email hoặc Password không được để trống");
+    document.getElementById("error").textContent = "Email hoặc Password không được để trống";
     return;
   }
   if (!checkUsere) {
-    alert("Email hoặc Password không đúng");
+    document.getElementById("error").textContent = "Email hoặc Password không đúng";
     return;
   }
-  window.location.href =
-    "https://docs.google.com/spreadsheets/d/1QFE_q66jNgFCoh8ArtcwYaeSYqntXfeveEftWWdYssI/edit?gid=243401149#gid=243401149";
+  let loggedInAccount = localStorage.setItem("loggedInAccount", JSON.stringify(checkUsere)); // lưu thông tin đăng nhập
+  window.location.href = "http://127.0.0.1:5500/pages/dashBoard.html";
+  document.getElementById("loginForm").reset();
+}
+// hàm bấm nút register ở nav
+function registerNav(e) {
+  e.preventDefault();
+  window.location.href = "http://127.0.0.1:5500/pages/register.html";
 }

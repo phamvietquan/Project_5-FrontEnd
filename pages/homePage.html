@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>homePage</title>
+    <title>HomePage</title>
     <link rel="stylesheet" href="/css/homePage.css" />
   </head>
   <body>
     <div class="container">
       <!-- thẻ nav -->
       <nav>
-        <a href="" style="color: black; font-weight: bold">VocabApp</a>
+        <a href="http://127.0.0.1:5500/pages/homePage.html" style="color: black; font-weight: bold">VocabApp</a>
         <a href="" id="1" style="color: #374151">Dashboard</a>
         <a href="" id="1" style="color: #374151">Categories</a>
         <a href="" id="1" style="color: #374151">Vocabulary</a>
@@ -22,8 +22,10 @@
         <h1>Welcome to VocabApp</h1>
         <p>Learn and practice vocabulary with flashcards and quizzes</p>
         <div class="btn">
-          <button style="background-color: #3b82f6">Get Started</button
-          ><button style="background-color: #22c55e">Create Account</button>
+          <button id="btn-get" style="background-color: #3b82f6" onclick="getStarted(event)">Get Started</button
+          ><button id="btn-create" style="background-color: #22c55e" onclick="createAccount(event)">
+            Create Account
+          </button>
         </div>
       </div>
       <!-- thẻ footer -->
@@ -31,5 +33,6 @@
         <p>&copy; 2024 VocabApp. All rights reserved.</p>
       </footer>
     </div>
+    <script src="/js/homePage.js"></script>
   </body>
 </html>
