@@ -13,11 +13,12 @@ nav {
   padding: 15px;
 }
 /* chữ vocabApp */
-h4 {
-  padding-top: 5px;
-  margin-left: 50px;
+a {
+  text-decoration: none;
+  font-weight: bold;
   color: #1f2937;
-  font-size: 18.9px;
+  margin-left: 50px;
+  padding-top: 5px;
 }
 /* nút đăng nhập ở nav */
 #btn-login-nav {

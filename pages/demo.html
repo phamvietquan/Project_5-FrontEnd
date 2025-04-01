@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/demo.css" />
+  </head>
+  <body>
+    <div>
+      <button onclick="openModal(`edit-word-modal`)">add</button>
+    </div>
+    <div id="edit-word-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('edit-word-modal')">&times;</span>
+        <h2>Edit Word</h2>
+        <form id="edit-word-form">
+          <label for="word">Word:</label>
+          <input type="text" id="word" name="word" required />
+
+          <label for="meaning">Meaning:</label>
+          <textarea id="meaning" name="meaning" required></textarea>
+
+          <label for="category">Category:</label>
+          <input type="text" id="category" name="category" required />
+
+          <button type="submit">Save</button>
+          <button type="button" onclick="closeModal('edit-word-modal')">Cancel</button>
+        </form>
+      </div>
+    </div>
+    <script src="/js/demo.js"></script>
+  </body>
+</html>

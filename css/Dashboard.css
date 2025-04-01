@@ -18,6 +18,10 @@ nav {
   gap: 20px;
   margin-right: 600px;
 }
+/* khi hover vào thẻ a */
+nav a:hover {
+  color: #3b82f6 !important;
+}
 /* thẻ div nút đăng xuất */
 #nav-logOut {
   display: flex;

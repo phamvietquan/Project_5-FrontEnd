@@ -22,23 +22,6 @@ nav a {
 nav a:hover {
   color: #3b82f6 !important;
 }
-/* thẻ p ở thẻ footer */
-p {
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
-}
-/* nút add category */
-#btn-add-cate {
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  padding: 0px 15px;
-  background-color: #22c55e;
-  color: white;
-}
-#btn-add-cate:hover {
-  background-color: #16a34a;
-}
 /* nút input */
 #search {
   width: 100%;
@@ -48,17 +31,16 @@ p {
   padding: 10px;
   padding-left: 15px;
 }
-/* khi bấm vào nút input */
 #search:focus {
   border-color: #3b82f6;
   outline: none;
   box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
 }
 /* bảng table */
-#table-category {
+table {
   /* width: 100%; */
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 30px;
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
@@ -69,19 +51,8 @@ p {
 #table-category td {
   padding: 12px;
 }
-/* thẻ th đậm hơn */
-#table-category th {
-  background-color: #f3f4f6;
-  font-weight: bold;
-}
-/* Blue for edit */
-.blue-link {
-  color: blue;
-  text-decoration: none;
-}
-/* Red for delete */
-.red-link {
-  color: red;
-  text-decoration: none;
-  margin-left: 10px;
+/* thẻ p ở thẻ footer */
+p {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
