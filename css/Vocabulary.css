@@ -38,9 +38,7 @@ nav a:hover {
 }
 /* bảng table */
 table {
-  /* width: 100%; */
-  border-collapse: collapse;
-  margin-top: 30px;
+  margin-top: 20px;
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
@@ -49,10 +47,42 @@ table {
 /* th và td trong table */
 #table-category th,
 #table-category td {
-  padding: 12px;
+  padding: 18px;
+  border: none;
+}
+#table-category th {
+  background-color: #f9fafb;
 }
 /* thẻ p ở thẻ footer */
 p {
   margin-top: 10px !important;
   margin-bottom: 10px !important;
+}
+/* edit */
+.blue-link {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* delete */
+.red-link {
+  color: red;
+  text-decoration: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+/* phân trang */
+ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+li {
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  padding-top: 3px;
+  cursor: pointer;
+  border-radius: 5px;
 }

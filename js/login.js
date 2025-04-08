@@ -9,10 +9,15 @@ function login(e) {
     return;
   }
   if (!checkUsere) {
-    document.getElementById("error").textContent = "Email hoặc Password không đúng";
+    document.getElementById("error").textContent = "Thông tin đăng nhập không hợp lệ";
     return;
   }
-  let loggedInAccount = localStorage.setItem("loggedInAccount", JSON.stringify(checkUsere)); // lưu thông tin đăng nhập
+  let account = {
+    email: checkUsere.email,
+    firstName: checkUsere.firstName,
+    lastName: checkUsere.lastName,
+  };
+  localStorage.setItem("loggedInAccount", JSON.stringify(account)); // lưu thông tin đăng nhập
   window.location.href = "http://127.0.0.1:5500/pages/dashBoard.html";
   document.getElementById("loginForm").reset();
 }

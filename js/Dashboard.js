@@ -1,3 +1,11 @@
+//ktra đăng nhập
+document.addEventListener("DOMContentLoaded", function () {
+  // khi trang html load xong
+  let loggedInAccount = localStorage.getItem("loggedInAccount");
+  if (!loggedInAccount) {
+    window.location.href = "http://127.0.0.1:5500/pages/login.html";
+  }
+});
 let name = JSON.parse(localStorage.getItem("loggedInAccount")) || [];
 // lấy tên đăng nhập để chào
 let p = document.getElementById("name");
@@ -10,8 +18,10 @@ function logOut(e) {
   e.preventDefault();
   let check = confirm("Bạn có chắc chắn muốn đăng xuất không?");
   if (check) {
+    localStorage.removeItem("loggedInAccount");
     window.location.href = "http://127.0.0.1:5500/pages/login.html";
   }
 }
+
 //Khi bấm vào nút làm quizz
 function playQuiz() {}

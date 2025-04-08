@@ -1,131 +1,180 @@
+//ktra đăng nhập
 document.addEventListener("DOMContentLoaded", function () {
-  let table = document.getElementById("table-category"); // lấy ra bảng
-
-  // Modal Thêm
-  let addCategoryModal = new bootstrap.Modal(document.getElementById("addCategoryModal")); // Điều khiển modal thêm danh mục
-  let addCategoryButton = document.getElementById("btn-add-cate"); //Nút mở modal "Thêm Danh Mục".
-  let addCategorySaveButton = document.getElementById("addCategorySave"); //Nút "Save" để lưu danh mục mới
-  let addCategoryName = document.getElementById("addCategoryName"); //Ô nhập tên danh mục.
-  let addCategoryDescription = document.getElementById("addCategoryDescription"); //Ô nhập mô tả danh mục
-
-  // Modal Sửa
-  let editCategoryModal = new bootstrap.Modal(document.getElementById("editCategoryModal")); // Điều khiển modal chỉnh sửa danh mục
-  let editCategorySaveButton = document.getElementById("editCategorySave"); //Nút "Save" để lưu chỉnh sửa.
-  let editCategoryName = document.getElementById("editCategoryName"); //Ô nhập tên danh mục khi sửa.
-  let editCategoryDescription = document.getElementById("editCategoryDescription"); // Ô nhập mô tả danh mục khi sửa
-  let editingRow = null; //Biến này lưu trữ dòng (<tr>) đang được chỉnh sửa.
-
-  // Modal Xóa
-  let deleteCategoryModal = new bootstrap.Modal(document.getElementById("deleteCategoryModal")); //Điều khiển modal xác nhận xóa danh mục.
-  let confirmDeleteButton = document.getElementById("confirmDelete"); //Nút "Delete" để xác nhận xóa danh mục.
-
-  //  Đọc dữ liệu từ localStorage khi trang tải lại
-  function loadCategories() {
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
-
-    // Xóa hết dữ liệu cũ (giữ lại hàng tiêu đề)
-    let rows = table.getElementsByTagName("tr");
-    while (rows.length > 1) {
-      table.deleteRow(1);
-    }
-
-    // Thêm từng danh mục vào bảng
-    categories.forEach((category) => {
-      addCategoryToTable(category.name, category.description);
-    });
+  // khi trang html load xong
+  let loggedInAccount = localStorage.getItem("loggedInAccount");
+  if (!loggedInAccount) {
+    window.location.href = "http://127.0.0.1:5500/pages/login.html";
   }
-
-  //  Lưu dữ liệu vào localStorage
-  function saveCategories() {
-    let categories = [];
-    table.querySelectorAll("tr").forEach((row, index) => {
-      if (index === 0) return; // Bỏ qua hàng tiêu đề
-      let name = row.cells[0].textContent;
-      let description = row.cells[1].textContent;
-      categories.push({ name, description });
-    });
-
-    localStorage.setItem("categories", JSON.stringify(categories));
-  }
-
-  //  Mở modal Thêm Danh Mục
-  addCategoryButton.addEventListener("click", function () {
-    addCategoryName.value = "";
-    addCategoryDescription.value = "";
-    addCategoryModal.show();
-  });
-
-  //  Xử lý khi nhấn "Save" trên modal thêm
-  addCategorySaveButton.addEventListener("click", function () {
-    let name = addCategoryName.value.trim();
-    let description = addCategoryDescription.value.trim();
-
-    if (!name) {
-      alert("Vui lòng nhập tên danh mục!");
-      return;
-    }
-
-    addCategoryToTable(name, description);
-    saveCategories();
-    addCategoryModal.hide();
-  });
-
-  //  Thêm danh mục vào bảng (không gọi localStorage ở đây)
-  function addCategoryToTable(name, description) {
-    let row = table.insertRow(-1);
-    row.innerHTML = `
-        <td>${name}</td>
-        <td>${description || ""}</td>
-        <td>
-          <a href="#" class="blue-link" onclick="editCategory(this)">Edit</a>
-          <a href="#" class="red-link" onclick="confirmDeleteCategory(this)">Delete</a>
-        </td>
-      `;
-  }
-
-  //  Mở modal Sửa Danh Mục
-  window.editCategory = function (element) {
-    editingRow = element.closest("tr");
-    editCategoryName.value = editingRow.cells[0].textContent;
-    editCategoryDescription.value = editingRow.cells[1].textContent;
-    editCategoryModal.show();
-  };
-
-  //  Lưu chỉnh sửa danh mục
-  editCategorySaveButton.addEventListener("click", function () {
-    if (editingRow) {
-      editingRow.cells[0].textContent = editCategoryName.value;
-      editingRow.cells[1].textContent = editCategoryDescription.value;
-      saveCategories(); // Cập nhật localStorage sau khi chỉnh sửa
-    }
-    editCategoryModal.hide();
-  });
-
-  //  Mở modal Xóa
-  window.confirmDeleteCategory = function (element) {
-    editingRow = element.closest("tr");
-    deleteCategoryModal.show();
-  };
-
-  //  Xác nhận xóa danh mục
-  confirmDeleteButton.addEventListener("click", function () {
-    if (editingRow) {
-      editingRow.remove();
-      editingRow = null;
-      saveCategories(); // Cập nhật lại localStorage sau khi xóa
-    }
-    deleteCategoryModal.hide();
-  });
-  // Tìm kiếm danh mục theo tên
-  searchInput.addEventListener("input", function () {
-    let filter = searchInput.value.toLowerCase();
-    let rows = table.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) {
-      let name = rows[i].cells[0].textContent.toLowerCase();
-      rows[i].style.display = name.includes(filter) ? "" : "none";
-    }
-  });
-  //  Load dữ liệu khi trang mở
-  loadCategories();
 });
+// gắn sự kiện input khi nhận vào ô search
+document.getElementById("search").addEventListener("input", function () {
+  renderCategori();
+});
+// hàm hiển thị danh sách
+function renderCategori(page) {
+  currentPage = page || currentPage;
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || []; // lấy ra mảng chứa danh mục
+  // tìm kiếm
+  let inputSearch = document.getElementById("search").value.toLowerCase().trim();
+  let search = categoryList;
+  if (inputSearch) {
+    search = categoryList.filter((el) => el.name.toLowerCase().includes(inputSearch));
+  }
+  let tbody = document.getElementById("tbody-category");
+  tbody.innerHTML = "";
+  let totalPage = Math.ceil(search.length / perPage);
+  if (currentPage > totalPage) currentPage = 1;
+  let start = (currentPage - 1) * perPage;
+  let end = start + perPage;
+  users = search.slice(start, end);
+  users.forEach((item, index) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML += `<td>${item.name}</td>
+            <td>${item.description || ""}</td>
+            <td>
+              <a href="#" class="blue-link" data-bs-toggle="modal" data-bs-target="#editCategoryModal" onclick="prepareEdit(${
+                item.id
+              })">Edit</a>
+              <a href="#" class="red-link" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal" onclick="prePageDelete(${
+                item.id
+              })">Delete</a>
+            </td>`;
+    tbody.appendChild(tr);
+  });
+}
+// hàm thêm
+function addCategory() {
+  let modal = bootstrap.Modal.getInstance(document.getElementById("addCategoryModal"));
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || []; // lấy ra mảng chứa danh mục
+  let inputName = document.getElementById("addCategoryName").value.trim();
+  let inputDescription = document.getElementById("addCategoryDescription").value.trim();
+  let errorName = document.getElementById("errorName");
+  if (!inputName) {
+    errorName.textContent = "Vui lòng nhập đầy đủ thông tin !";
+    return;
+  } else {
+    errorName.textContent = "";
+  }
+  let checkName = categoryList.some((item) => item.name.toLowerCase() === inputName.toLowerCase());
+  if (checkName) {
+    errorName.textContent = "Danh mục này đã có trong danh sách";
+    return;
+  }
+  categoryList.push({
+    id: categoryList.length > 0 ? categoryList[categoryList.length - 1].id + 1 : 1,
+    name: inputName,
+    description: inputDescription,
+  });
+  localStorage.setItem("categoryList", JSON.stringify(categoryList));
+  // Đóng modal
+  modal.hide();
+  // Reset form sau khi thêm
+  document.querySelector("#form-modal-add").reset();
+  renderCategori();
+  renderPageNumber();
+}
+// hàm lưu lưu id sửa
+let currentIdEdit = -1;
+function prepareEdit(id) {
+  currentIdEdit = id;
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let categoryEdit = categoryList.find((item) => item.id === currentIdEdit);
+  if (categoryEdit) {
+    document.getElementById("editCategoryName").value = categoryEdit.name;
+    document.getElementById("editCategoryDescription").value = categoryEdit.description;
+  }
+}
+// hàm sửa category
+function editCategory() {
+  let modal = bootstrap.Modal.getInstance(document.getElementById("editCategoryModal"));
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let inputName = document.getElementById("editCategoryName").value.trim();
+  let inputDescription = document.getElementById("editCategoryDescription").value.trim();
+  let errorName = document.getElementById("errorName");
+  if (!inputName) {
+    errorName.textContent = "Vui lòng nhập đầy đủ thông tin !";
+    return;
+  } else {
+    errorName.textContent = "";
+  }
+  let checkName = categoryList.some((item) => item.name.toLowerCase() === inputName.toLowerCase());
+  if (checkName) {
+    errorName.textContent = "Danh mục này đã có trong danh sách";
+    return;
+  }
+  let checkCategory = categoryList.find((item) => item.id === currentIdEdit);
+  if (checkCategory) {
+    checkCategory.name = inputName;
+    checkCategory.description = inputDescription;
+    localStorage.setItem("categoryList", JSON.stringify(categoryList));
+    renderCategori();
+    // đóng modal
+    modal.hide();
+  }
+}
+// hàm lưu id xoá
+let currentIdDelete = -1;
+function prePageDelete(id) {
+  currentIdDelete = id;
+}
+// hàm xoá
+function deleteCategory() {
+  let modal = bootstrap.Modal.getInstance(document.getElementById("deleteCategoryModal"));
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let itemIndex = categoryList.findIndex((el) => el.id === currentIdDelete);
+  if (itemIndex !== -1) {
+    categoryList.splice(itemIndex, 1);
+    localStorage.setItem("categoryList", JSON.stringify(categoryList));
+    renderCategori();
+    // đóng modal
+    modal.hide();
+  }
+}
+// hàm phân trang
+let currentPage = 1;
+let perPage = 3;
+function renderPageNumber() {
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let ul = document.getElementById("pagination");
+  ul.innerHTML = "";
+  let totalPage = Math.ceil(categoryList.length / perPage);
+  ul.innerHTML += `<li onclick="prePage()" style="width:80px; opacity:${
+    currentPage === 1 ? "0.5" : "1"
+  }">Previous</li>`;
+  for (let i = 1; i <= totalPage; i++) {
+    ul.innerHTML += `<li onclick="changePage(${i})" style="background-color: ${
+      i === currentPage ? "#007bff" : "transparent"
+    };
+    color: ${i === currentPage ? "#fff" : "#000"}">${i}</li>`;
+  }
+  ul.innerHTML += `<li onclick="nextPage()" style="width:50px;opacity:${
+    currentPage === totalPage ? "0.5" : "1"
+  }">Next</li>`;
+}
+function changePage(page) {
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let totalPage = Math.ceil(categoryList.length / perPage);
+  if (page < 1 || page > totalPage) return;
+  currentPage = page;
+  renderCategori();
+  renderPageNumber();
+}
+function prePage() {
+  if (currentPage > 1) {
+    currentPage--;
+    renderCategori();
+    renderPageNumber();
+  } else {
+  }
+}
+function nextPage() {
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  let totalPage = Math.ceil(categoryList.length / perPage);
+  if (currentPage < totalPage) {
+    currentPage++;
+    renderCategori();
+    renderPageNumber();
+  }
+}
+renderCategori();
+renderPageNumber();

@@ -74,14 +74,29 @@ p {
   background-color: #f3f4f6;
   font-weight: bold;
 }
-/* Blue for edit */
+/* edit */
 .blue-link {
   color: blue;
   text-decoration: none;
 }
-/* Red for delete */
+/* delete */
 .red-link {
   color: red;
   text-decoration: none;
   margin-left: 10px;
+}
+/* phân trang */
+ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+li {
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  padding-top: 3px;
+  cursor: pointer;
+  border-radius: 5px;
 }
