@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash</title>
+    <link rel="stylesheet" href="/css/flash.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- thẻ nav -->
+    <!-- <nav>
+      <h4 style="color: black; margin-top: 5px">VocabApp</h4>
+      <a href="http://127.0.0.1:5500/pages/dashboard.html" id="1" style="color: #374151">Dashboard</a>
+      <a href="http://127.0.0.1:5500/pages/categories.html" id="1" style="color: #374151">Categories</a>
+      <a href="http://127.0.0.1:5500/pages/vocabulary.html" id="1" style="color: #374151">Vocabulary</a>
+      <a href="http://127.0.0.1:5500/pages/flash.html" id="1" style="color: #374151">Flashcards</a>
+      <a href="" id="1" style="color: #374151">Quiz</a>
+    </nav> -->
+    <!-- Content-->
+    <div class="container mt-3">
+      <h3>Flashcard Learning</h3>
+
+      <select class="category-select w-100 rounded-2" style="border: 1px solid #dee2e6; padding: 5px 0px 7px 15px">
+        <option>All categories</option>
+        <!-- Các lựa chọn khác -->
+      </select>
+      <!-- card -->
+      <div class="d-flex justify-content-center align-items-center mt-3">
+        <p class="flashcard d-flex justify-content-center align-items-center fw-bold fs-3">No words available</p>
+      </div>
+      <!-- các nút btn -->
+      <div class="navigation d-flex justify-content-center gap-3">
+        <button class="btn previous btn-primary text-light">Previous</button>
+        <button class="btn mark-as-learned text-light" style="background-color: #22c55e">Mark as Learned</button>
+        <button class="btn next btn-primary text-light">Next</button>
+      </div>
+      <!-- Progress Section  -->
+      <div id="progress" class="mx-auto" style="width: 40%">
+        <div class="d-flex justify-content-between my-3">
+          <span>Progress</span>
+          <span>0/0</span>
+        </div>
+        <div class="progress" style="height: 10px"></div>
+      </div>
+      <!-- list -->
+      <h5 class="fw-bold">Word List</h5>
+      <table class="word-list">
+        <thead>
+          <tr>
+            <th class="fw-light text-secondary">WORD</th>
+            <th class="fw-light text-secondary">MEANING</th>
+            <th class="fw-light text-secondary">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dữ liệu từ danh sách từ có thể thêm vào đây -->
+        </tbody>
+      </table>
+    </div>
+    <!-- thẻ footer -->
+    <footer class="text-center bg-light py-2 mt-auto" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)">
+      <p style="margin-top: 10px !important; margin-bottom: 10px !important">
+        &copy; 2024 VocabApp. All rights reserved.
+      </p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

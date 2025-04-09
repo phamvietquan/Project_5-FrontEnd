@@ -1,0 +1,55 @@
+/* thẻ nav */
+nav {
+  background-color: #f3f4f6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  gap: 20px;
+  padding-left: 100px;
+}
+/* các thẻ ở nav */
+nav a {
+  text-decoration: none;
+}
+/* khi hover vào thẻ a */
+nav a:hover {
+  color: #3b82f6 !important;
+}
+.flashcard {
+  width: 500px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+/* bảng table */
+.word-list {
+  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* th và td trong table */
+.word-list th,
+.word-list td {
+  padding: 10px 20px;
+}
+/* thẻ th đậm hơn */
+.word-list th {
+  background-color: #f3f4f6;
+  font-size: 13px;
+  font-weight: 500 !important;
+}
+@media screen and (max-width: 834px) {
+  #progress {
+    width: 500px !important;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #progress {
+    width: 300px !important;
+  }
+}

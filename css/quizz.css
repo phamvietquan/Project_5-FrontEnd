@@ -1,0 +1,16 @@
+.quizz-list {
+  width: 100%;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.quizz-list th .quizz-list td {
+  padding: 10px 20px;
+}
+.quizz-list th {
+  font-size: 13px;
+  font-weight: 500 !important;
+  padding: 10px 20px;
+}
