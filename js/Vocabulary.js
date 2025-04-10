@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "http://127.0.0.1:5500/pages/login.html";
     return;
   }
-  renderCategories();
-  renderCategorySelect();
-  renderVocabulary();
-  renderPageNumber();
+  renderCategories(); // lưu cate vào bên cate
+  renderCategorySelect(); //hiển thị ra select
+  renderVocabulary(); // hiển thị danh sách
+  renderPageNumber(); // hiển thị phân trang
 });
 // renderCategories
 function renderCategories() {
@@ -40,10 +40,12 @@ function renderCategorySelect() {
 // gắn sự kiện input khi nhận vào ô search
 document.getElementById("search").addEventListener("input", function () {
   renderVocabulary(1);
+  renderPageNumber();
 });
 //gắn sự kiện change khi lựa chọn select
 document.getElementById("select-vocabulary").addEventListener("change", function () {
   renderVocabulary(1);
+  renderPageNumber();
 });
 //hàm hiển thị danh sách từ vựng
 function renderVocabulary(page) {
@@ -83,7 +85,7 @@ function renderVocabulary(page) {
 }
 // thêm từ
 function addVocabulary() {
-  let modal = bootstrap.Modal.getInstance(document.getElementById("addWordModal "));
+  let modal = bootstrap.Modal.getInstance(document.getElementById("addWordModal"));
   let VocabularyList = JSON.parse(localStorage.getItem("VocabularyList")) || []; // lấy ra mảng từ vựng
   let categoryList = JSON.parse(localStorage.getItem("categoryList")) || []; // lấy ra mảng chứa danh mục
   let inputWord = document.getElementById("wordInput").value.trim();
@@ -162,7 +164,7 @@ function prepareEdit(id) {
 }
 // Hàm sửa từ
 function editVocabulary() {
-  let modal = bootstrap.Modal.getInstance(document.getElementById("addNewProject"));
+  let modal = bootstrap.Modal.getInstance(document.getElementById("editWordModal"));
   let VocabularyList = JSON.parse(localStorage.getItem("VocabularyList")) || [];
   let inputWord = document.getElementById("editWordInput").value.trim();
   let inputMeaning = document.getElementById("editMeaningInput").value.trim();
@@ -230,8 +232,8 @@ function deleteVocabulary() {
     // đóng modal
     modal.hide();
   }
-  renderVocabulary();
   renderPageNumber();
+  renderVocabulary();
   renderCategorySelect();
 }
 // hàm phân trang
@@ -239,9 +241,21 @@ let currentPage = 1;
 let perPage = 3;
 function renderPageNumber() {
   let VocabularyList = JSON.parse(localStorage.getItem("VocabularyList")) || [];
+  // Lọc theo search input
+  let filteredList = VocabularyList;
+  let inputSearch = document.getElementById("search").value.toLowerCase().trim();
+  if (inputSearch) {
+    filteredList = filteredList.filter((el) => el.word.toLowerCase().includes(inputSearch));
+  }
+
+  // Lọc theo danh mục
+  let selectedCategory = document.getElementById("select-vocabulary").value.trim();
+  if (selectedCategory !== "") {
+    filteredList = filteredList.filter((el) => el.category.trim().toLowerCase() === selectedCategory.toLowerCase());
+  }
   let ul = document.getElementById("pagination");
   ul.innerHTML = "";
-  let totalPage = Math.ceil(VocabularyList.length / perPage);
+  let totalPage = Math.ceil(filteredList.length / perPage);
   ul.innerHTML += `<li onclick="prePage()" style="width:80px; opacity:${
     currentPage === 1 ? "0.5" : "1"
   }">Previous</li>`;

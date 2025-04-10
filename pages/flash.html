@@ -9,25 +9,27 @@
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- thẻ nav -->
-    <!-- <nav>
+    <nav>
       <h4 style="color: black; margin-top: 5px">VocabApp</h4>
-      <a href="http://127.0.0.1:5500/pages/dashboard.html" id="1" style="color: #374151">Dashboard</a>
-      <a href="http://127.0.0.1:5500/pages/categories.html" id="1" style="color: #374151">Categories</a>
-      <a href="http://127.0.0.1:5500/pages/vocabulary.html" id="1" style="color: #374151">Vocabulary</a>
-      <a href="http://127.0.0.1:5500/pages/flash.html" id="1" style="color: #374151">Flashcards</a>
-      <a href="" id="1" style="color: #374151">Quiz</a>
-    </nav> -->
+      <a href="http://127.0.0.1:5500/pages/dashboard.html" style="color: #374151">Dashboard</a>
+      <a href="http://127.0.0.1:5500/pages/categories.html" style="color: #374151">Categories</a>
+      <a href="http://127.0.0.1:5500/pages/vocabulary.html" style="color: #374151">Vocabulary</a>
+      <a href="http://127.0.0.1:5500/pages/flash.html" style="color: #374151">Flashcards</a>
+      <a href="http://127.0.0.1:5500/pages/quizz.html" style="color: #374151">Quiz</a>
+    </nav>
     <!-- Content-->
     <div class="container mt-3">
       <h3>Flashcard Learning</h3>
-
-      <select class="category-select w-100 rounded-2" style="border: 1px solid #dee2e6; padding: 5px 0px 7px 15px">
-        <option>All categories</option>
+      <select id="category-select" class="w-100 rounded-2" style="border: 1px solid #dee2e6; padding: 5px 0px 7px 15px">
+        <!-- <option>All categories</option> -->
         <!-- Các lựa chọn khác -->
       </select>
       <!-- card -->
-      <div class="d-flex justify-content-center align-items-center mt-3">
-        <p class="flashcard d-flex justify-content-center align-items-center fw-bold fs-3">No words available</p>
+      <div class="flipCard">
+        <div class="card" onclick="this.classList.toggle('flipped');">
+          <div class="side front">Keyword</div>
+          <div class="side back">Definition<br />Explanation</div>
+        </div>
       </div>
       <!-- các nút btn -->
       <div class="navigation d-flex justify-content-center gap-3">
@@ -36,7 +38,7 @@
         <button class="btn next btn-primary text-light">Next</button>
       </div>
       <!-- Progress Section  -->
-      <div id="progress" class="mx-auto" style="width: 40%">
+      <div id="progress" class="mx-auto" style="width: 39%">
         <div class="d-flex justify-content-between my-3">
           <span>Progress</span>
           <span>0/0</span>
@@ -53,10 +55,13 @@
             <th class="fw-light text-secondary">STATUS</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="table-tbody">
           <!-- Dữ liệu từ danh sách từ có thể thêm vào đây -->
         </tbody>
       </table>
+    </div>
+    <div class="d-flex justify-content-center mt-5 mb-3">
+      <ul id="pagination"></ul>
     </div>
     <!-- thẻ footer -->
     <footer class="text-center bg-light py-2 mt-auto" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.4)">
@@ -69,5 +74,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="/js/flash.js"></script>
   </body>
 </html>

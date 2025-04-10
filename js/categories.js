@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!loggedInAccount) {
     window.location.href = "http://127.0.0.1:5500/pages/login.html";
   }
+  renderCategori(); // hiển thị ra danh sach
+  renderPageNumber(); // hiển thị ra phân trang
 });
 // gắn sự kiện input khi nhận vào ô search
 document.getElementById("search").addEventListener("input", function () {
@@ -70,6 +72,7 @@ function addCategory() {
   modal.hide();
   // Reset form sau khi thêm
   document.querySelector("#form-modal-add").reset();
+  currentPage = Math.ceil(categoryList.length / perPage);
   renderCategori();
   renderPageNumber();
 }
@@ -125,7 +128,10 @@ function deleteCategory() {
   if (itemIndex !== -1) {
     categoryList.splice(itemIndex, 1);
     localStorage.setItem("categoryList", JSON.stringify(categoryList));
+    let totalPage = Math.ceil(categoryList.length / perPage);
+    if (currentPage > totalPage) currentPage = totalPage;
     renderCategori();
+    renderPageNumber();
     // đóng modal
     modal.hide();
   }
@@ -164,7 +170,6 @@ function prePage() {
     currentPage--;
     renderCategori();
     renderPageNumber();
-  } else {
   }
 }
 function nextPage() {
