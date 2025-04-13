@@ -16,6 +16,23 @@ nav a {
 nav a:hover {
   color: #3b82f6 !important;
 }
+/* nút input */
+#search {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f3f4f6;
+  padding: 5px;
+  padding-left: 15px;
+}
+#search:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+/* loại bỏ viền mặc định khi chọn */
+#category-select {
+  outline: none;
+}
 /* Hiệu ứng lật thẻ */
 .flipCard {
   perspective: 800px;
@@ -110,5 +127,15 @@ li {
   .flipCard {
     width: 300px;
     height: 200px;
+  }
+  #pagination {
+    padding-right: 32px;
+  }
+  ul {
+    gap: 5px;
+  }
+  li {
+    width: 25px;
+    height: 30px;
   }
 }

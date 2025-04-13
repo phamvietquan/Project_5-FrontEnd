@@ -20,6 +20,25 @@
       >
         <!-- <option>All categories</option> -->
       </select>
+      <!-- Thanh tiến độ -->
+      <div id="progress" class="mx-auto">
+        <div class="d-flex justify-content-between my-3">
+          <span>Progress</span>
+          <span id="progress-text">0/0</span>
+        </div>
+        <div class="progress" style="height: 10px">
+          <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+        </div>
+      </div>
+      <!-- Câu hỏi -->
+      <div id="box">
+        <h4>What is the meaning of "<span id="word">Dog</span>"?</h4>
+        <div class="d-flex flex-column gap-2">
+          <button id="false" class="py-3 rounded-2">Mèo</button> <button id="true" class="py-3 rounded-2">Cún</button>
+        </div>
+      </div>
+      <!-- hai nút btn -->
+      <div id="btn" class="d-flex justify-content-between"><button>Previous</button><button>Next</button></div>
       <h5 class="mt-3">Quiz History</h5>
       <table class="quizz-list">
         <thead>

@@ -68,14 +68,24 @@ function getFilteredVocabulary() {
   }
   return VocabularyList;
 }
+// khi tìm kiếm
+document.getElementById("search").addEventListener("input", function () {
+  currentPage = 1;
+  renderWord();
+});
 // hiển thị từ ra bảng
 function renderWord() {
+  let VocabularyList = getFilteredVocabulary();
+  let search = VocabularyList;
   let tbody = document.getElementById("table-tbody");
   tbody.innerHTML = "";
-  let VocabularyList = getFilteredVocabulary();
+  let inputSearch = document.getElementById("search").value.toLowerCase().trim();
+  if (inputSearch) {
+    search = VocabularyList.filter((el) => el.word.toLowerCase().includes(inputSearch));
+  }
   let start = (currentPage - 1) * perPage;
   let end = start + perPage;
-  let users = VocabularyList.slice(start, end);
+  let users = search.slice(start, end);
   users.forEach((element) => {
     let row = document.createElement("tr");
     row.innerHTML = `
@@ -105,7 +115,9 @@ function renderPageNumber() {
     };
     color: ${i === currentPage ? "#fff" : "#000"}">${i}</li>`;
   }
-  ul.innerHTML += `<li onclick="nextPage()" style="opacity:${currentPage === totalPage ? "0.5" : "1"}">Next</li>`;
+  ul.innerHTML += `<li onclick="nextPage()" style="width:50px;opacity:${
+    currentPage === totalPage ? "0.5" : "1"
+  }">Next</li>`;
 }
 // khi bấm vào từng trang
 function changePage(page) {
