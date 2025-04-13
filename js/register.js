@@ -43,11 +43,22 @@ function registerForm(e) {
   });
   localStorage.setItem("usersList", JSON.stringify(usersList));
   document.getElementById("registerForm").reset(); // xoá toàn bộ thông tin ở các ô input
-  alert("Đăng ký thành công");
-  window.location.href = "http://127.0.0.1:5500/pages/login.html";
+  showToast("Đăng ký thành công!");
+  setTimeout(() => {
+    window.location.href = "http://127.0.0.1:5500/pages/login.html";
+  }, 1500);
 }
 //hàm bấm vào nút login ở nav
 function loginNav(e) {
   e.preventDefault();
   window.location.href = "http://127.0.0.1:5500/pages/login.html";
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 2000);
 }

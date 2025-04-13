@@ -42,6 +42,9 @@ a {
   margin-bottom: -7px;
   cursor: pointer;
 }
+#btn-logout:hover {
+  background-color: #be3329;
+}
 /* nội dung ở giữa */
 .container-content {
   display: flex;
@@ -58,6 +61,9 @@ a {
   border-radius: 5px;
   padding: 10px 15px;
   cursor: pointer;
+}
+#btn-quiz:hover {
+  background-color: #3bcd3d;
 }
 /* thẻ footer */
 footer {

@@ -118,3 +118,20 @@ footer {
   padding: 20px 0px;
   margin-top: 210px;
 }
+/* hộp thoại thông báo */
+#toast {
+  position: fixed;
+  top: 55px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}

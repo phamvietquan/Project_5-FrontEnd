@@ -24,4 +24,6 @@ function logOut(e) {
 }
 
 //Khi bấm vào nút làm quizz
-function playQuiz() {}
+function playQuiz() {
+  window.location.href = "http://127.0.0.1:5500/pages/quizz.html";
+}

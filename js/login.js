@@ -18,11 +18,23 @@ function login(e) {
     lastName: checkUsere.lastName,
   };
   localStorage.setItem("loggedInAccount", JSON.stringify(account)); // lưu thông tin đăng nhập
-  window.location.href = "http://127.0.0.1:5500/pages/dashBoard.html";
   document.getElementById("loginForm").reset();
+  showToast("Đăng nhập thành công");
+  setTimeout(() => {
+    window.location.href = "http://127.0.0.1:5500/pages/dashBoard.html";
+  }, 1500);
 }
 // hàm bấm nút register ở nav
 function registerNav(e) {
   e.preventDefault();
   window.location.href = "http://127.0.0.1:5500/pages/register.html";
+}
+
+function showToast(message) {
+  let toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.remove("hidden");
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 2000);
 }
