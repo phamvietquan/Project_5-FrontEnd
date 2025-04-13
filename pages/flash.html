@@ -27,23 +27,27 @@
       <!-- card -->
       <div class="flipCard">
         <div class="card" onclick="this.classList.toggle('flipped');">
-          <div class="side front">Keyword</div>
-          <div class="side back">Definition<br />Explanation</div>
+          <div id="wordFlash" class="side front">Keyword</div>
+          <div id="meaningFlash" class="side back">Definition<br />Explanation</div>
         </div>
       </div>
       <!-- các nút btn -->
       <div class="navigation d-flex justify-content-center gap-3">
-        <button class="btn previous btn-primary text-light">Previous</button>
-        <button class="btn mark-as-learned text-light" style="background-color: #22c55e">Mark as Learned</button>
-        <button class="btn next btn-primary text-light">Next</button>
+        <button id="previous" class="btn previous btn-primary text-light">Previous</button>
+        <button id="tick" class="btn mark-as-learned text-light" style="background-color: #22c55e">
+          Mark as Learned
+        </button>
+        <button id="next" class="btn next btn-primary text-light">Next</button>
       </div>
       <!-- Progress Section  -->
       <div id="progress" class="mx-auto" style="width: 39%">
         <div class="d-flex justify-content-between my-3">
           <span>Progress</span>
-          <span>0/0</span>
+          <span id="progress-text">0/0</span>
         </div>
-        <div class="progress" style="height: 10px"></div>
+        <div class="progress" style="height: 10px">
+          <div id="progress-bar" class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+        </div>
       </div>
       <!-- list -->
       <h5 class="fw-bold">Word List</h5>
