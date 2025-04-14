@@ -22,7 +22,7 @@ function login(e) {
   showToast("Đăng nhập thành công");
   setTimeout(() => {
     window.location.href = "http://127.0.0.1:5500/pages/dashBoard.html";
-  }, 1500);
+  }, 1000);
 }
 // hàm bấm nút register ở nav
 function registerNav(e) {

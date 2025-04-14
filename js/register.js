@@ -46,7 +46,7 @@ function registerForm(e) {
   showToast("Đăng ký thành công!");
   setTimeout(() => {
     window.location.href = "http://127.0.0.1:5500/pages/login.html";
-  }, 1500);
+  }, 1000);
 }
 //hàm bấm vào nút login ở nav
 function loginNav(e) {
