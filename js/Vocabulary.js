@@ -154,7 +154,7 @@ function addVocabulary() {
 let currentIdEdit = -1;
 function prepareEdit(id) {
   let VocabularyList = JSON.parse(localStorage.getItem("VocabularyList")) || [];
-  currentIdEdit = id; // Lưu id thay vì index
+  currentIdEdit = id;
   let itemToEdit = VocabularyList.find((item) => item.id === currentIdEdit);
   if (itemToEdit) {
     document.getElementById("editWordInput").value = itemToEdit.word;

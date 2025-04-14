@@ -53,7 +53,7 @@ function loginNav(e) {
   e.preventDefault();
   window.location.href = "http://127.0.0.1:5500/pages/login.html";
 }
-
+// hộp thoại thông báo
 function showToast(message) {
   const toast = document.getElementById("toast");
   toast.textContent = message;

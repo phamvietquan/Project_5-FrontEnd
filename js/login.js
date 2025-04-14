@@ -29,7 +29,7 @@ function registerNav(e) {
   e.preventDefault();
   window.location.href = "http://127.0.0.1:5500/pages/register.html";
 }
-
+// hộp thoại thông báo
 function showToast(message) {
   let toast = document.getElementById("toast");
   toast.textContent = message;
