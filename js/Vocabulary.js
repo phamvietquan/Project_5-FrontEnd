@@ -6,27 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "http://127.0.0.1:5500/pages/login.html";
     return;
   }
-  renderCategories(); // lưu cate vào bên cate
   renderCategorySelect(); //hiển thị ra select
   renderVocabulary(); // hiển thị danh sách
   renderPageNumber(); // hiển thị phân trang
 });
-// renderCategories
-function renderCategories() {
-  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
-  let VocabularyList = JSON.parse(localStorage.getItem("VocabularyList")) || [];
-  VocabularyList.forEach((voca) => {
-    let checkCategory = categoryList.find((el) => el.name.toLowerCase() === voca.category.toLowerCase());
-    if (!checkCategory) {
-      categoryList.push({
-        id: categoryList.length > 0 ? categoryList[categoryList.length - 1].id + 1 : 1,
-        name: voca.category,
-        description: "",
-      });
-    }
-  });
-  localStorage.setItem("categoryList", JSON.stringify(categoryList)); // Lưu lại danh mục mới
-}
 // hàm render lại categorry
 function renderCategorySelect() {
   let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
@@ -214,6 +197,20 @@ function editVocabulary() {
     // đóng modal
     modal.hide();
   }
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  VocabularyList.forEach((voca) => {
+    let checkCategory = categoryList.find((el) => el.name.toLowerCase() === voca.category.toLowerCase());
+    if (!checkCategory) {
+      categoryList.push({
+        id: categoryList.length > 0 ? categoryList[categoryList.length - 1].id + 1 : 1,
+        name: voca.category,
+        description: "",
+      });
+    }
+  });
+  let usersCategory = VocabularyList.map((item) => item.category.toLowerCase());
+  categoryList = categoryList.filter((el) => usersCategory.includes(el.name.toLowerCase()));
+  localStorage.setItem("categoryList", JSON.stringify(categoryList)); // Lưu lại danh mục mới
 }
 // lấy ra index để xoá
 let currentIdDelete = -1;
@@ -232,6 +229,20 @@ function deleteVocabulary() {
     // đóng modal
     modal.hide();
   }
+  let categoryList = JSON.parse(localStorage.getItem("categoryList")) || [];
+  VocabularyList.forEach((voca) => {
+    let checkCategory = categoryList.find((el) => el.name.toLowerCase() === voca.category.toLowerCase());
+    if (!checkCategory) {
+      categoryList.push({
+        id: categoryList.length > 0 ? categoryList[categoryList.length - 1].id + 1 : 1,
+        name: voca.category,
+        description: "",
+      });
+    }
+  });
+  let usersCategory = VocabularyList.map((item) => item.category.toLowerCase());
+  categoryList = categoryList.filter((el) => usersCategory.includes(el.name.toLowerCase()));
+  localStorage.setItem("categoryList", JSON.stringify(categoryList)); // Lưu lại danh mục mới
   renderPageNumber();
   renderVocabulary();
   renderCategorySelect();
